@@ -9,38 +9,32 @@
 </template>
 
 <script>
+import { mapState, mapGetters, mapActions } from 'vuex'
+
 export default {
   computed: {
-    evenOrOdd() {
-      return this.$store.getters.evenOrOdd
-    }
+    // evenOrOdd() {
+    //   return this.$store.getters.evenOrOdd
+    // }
+    ...mapState(['count']),
+    ...mapGetters({evenOrOdd: 'evenOrOdd'}) //mapGtters() 返回值: {evenOrOdd {return $store.getters[evenOrOdd]}}
   },
   methods: {
-    increment() {
-      // 通知vuex去增加
-      this.$store.dispatch('increment') // 触发 store中的action调用
-      // const count = this.count
-      // this.count = count + 1
-    },
-    decrement() {
-      this.$store.dispatch('decrement')
-      // const count = this.count
-      // this.count = count - 1
-    },
-    incrementIfOdd(){
-      this.$store.dispatch('incrementIfOdd')
-      // const count = this.count
-      // if(count % 2 === 1) {
-      //   this.count = count + 1
-      // }
-    },
-    incrementAsync(){
-      this.$store.dispatch('incrementAsync')
-      // setTimeout(()=> {
-      //   const count = this.count
-      //   this.count = count + 1
-      // }, 1000)
-    }
+    // increment() {
+    //   // 通知vuex去增加, 触发 store中的action调用
+    //   this.$store.dispatch('increment')
+    // },
+    // decrement() {
+    //   this.$store.dispatch('decrement')
+    // },
+    // incrementIfOdd(){
+    //   this.$store.dispatch('incrementIfOdd')
+    //   // }
+    // },
+    // incrementAsync(){
+    //   this.$store.dispatch('incrementAsync')
+    // }
+    ...mapActions(['increment', 'decrement', 'incrementIfOdd', 'incrementAsync'])
   }
 }
 </script>
