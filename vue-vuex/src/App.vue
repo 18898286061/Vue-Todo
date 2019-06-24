@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p>Click {{$store.state.count}} Times, Count is {{eventOrOdd}}</p>
+    <p>Click {{$store.state.count}} Times, Count is {{evenOrOdd}}</p>
     <button @click="increment">+</button>
     <button @click="decrement">-</button>
     <button @click="incrementIfOdd">increment if odd</button>
@@ -10,11 +10,8 @@
 
 <script>
 export default {
-  data() {
-
-  },
   computed: {
-    eventOrOdd() {
+    evenOrOdd() {
       return this.$store.getters.evenOrOdd
     }
   },

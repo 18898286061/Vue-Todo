@@ -8,27 +8,28 @@ const state = { // 初始化状态
   count: 0
 }
 
-const getters = {
-  eventOrOdd(state) { // 不需要调用，只需要读取属性值
-    return state.count % 2 === 0 ? '偶数' : '奇数'
-  }
-}
-
 const actions = {
   // 增加的action
- increment({commit}){
+  increment({commit}){
   //  提交mutation
   commit('INCREMENT')
- },
- // 减少的action
- decrement({commit}) {
-   commit('DECREMENT')
- },
- incrementIfOdd({commit, state}) {
-   if(state.count % 2 === 1) {
+  },
+  // 减少的action
+  decrement({commit}) {
     commit('DECREMENT')
-   }
- }
+  },
+  // 带有条件的action
+  incrementIfOdd({commit, state}) {
+    if(state.count % 2 === 1) {
+    commit('INCREMENT')
+    }
+  },
+  // 异步的action
+  incrementAsync({commit}) {
+    setTimeout(()=> {
+      commit('INCREMENT')
+    }, 1000)
+  }
 }
 
 const mutations = {
@@ -40,6 +41,12 @@ const mutations = {
   DECREMENT() {
     state.count--
   },
+}
+
+const getters = {
+  evenOrOdd(state) { // 不需要调用，只需要读取属性值
+    return state.count % 2 === 0 ? '偶数' : '奇数'
+  }
 }
 
 // 包含多个更新 state 函数的对象
