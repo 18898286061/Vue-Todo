@@ -24,6 +24,11 @@ const actions = {
     commit('INCREMENT')
     }
   },
+  incrementIfEven({commit, state}) {
+    if(state.count % 2 === 0) {
+      commit('INCREMENT')
+    }
+  },
   // 异步的action
   incrementAsync({commit}) {
     setTimeout(()=> {
@@ -46,6 +51,9 @@ const mutations = {
 const getters = {
   evenOrOdd(state) { // 不需要调用，只需要读取属性值
     return state.count % 2 === 0 ? '偶数' : '奇数'
+  },
+  orLuckNumber(state) {
+    return state.count === 7 ? 'Luck' : `Don't Luck`
   }
 }
 

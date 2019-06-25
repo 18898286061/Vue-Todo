@@ -1,9 +1,12 @@
 <template>
   <div>
-    <p>Click {{$store.state.count}} Times, Count is {{evenOrOdd}}</p>
+    <!-- <p>Click {{$store.state.count}} Times, Count is {{evenOrOdd}}</p> -->
+    <p>Click {{count}} Times, Count is {{evenOrOdd}}</p>
+    <!-- <p>{{orLuckNumber}}</p> -->
     <button @click="increment">+</button>
     <button @click="decrement">-</button>
     <button @click="incrementIfOdd">increment if odd</button>
+    <button @click="incrementIfEven">increment if even</button>
     <button @click="incrementAsync">increment async</button>
   </div>
 </template>
@@ -15,9 +18,12 @@ export default {
   computed: {
     // evenOrOdd() {
     //   return this.$store.getters.evenOrOdd
-    // }
+    // },
     ...mapState(['count']),
-    ...mapGetters({evenOrOdd: 'evenOrOdd'}) //mapGtters() 返回值: {evenOrOdd {return $store.getters[evenOrOdd]}}
+    ...mapGetters({
+      evenOrOdd: 'evenOrOdd',
+      orLuckNumber: 'orLuckNumber'
+      }) //mapGtters() 返回值: {evenOrOdd {return $store.getters[evenOrOdd]}}
   },
   methods: {
     // increment() {
@@ -34,7 +40,7 @@ export default {
     // incrementAsync(){
     //   this.$store.dispatch('incrementAsync')
     // }
-    ...mapActions(['increment', 'decrement', 'incrementIfOdd', 'incrementAsync'])
+    ...mapActions(['increment', 'decrement', 'incrementIfOdd', 'incrementIfEven', 'incrementAsync'])
   }
 }
 </script>
