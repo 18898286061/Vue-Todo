@@ -4,8 +4,11 @@
     <ul>
       <li v-for="(message) in messages" :key="message.id">
         <router-link :to="`/home/message/detail/${message.id}`">{{message.title}}</router-link>
+        <button @click="pushShow(message.id)">Push查看</button>
+        <button @click="replaceShow(message.id)">Replace查看</button>
       </li>
     </ul>
+    <button @click="$router.back()">回退</button>
     <router-view></router-view>
   </h3>
 </template>
@@ -36,7 +39,17 @@ export default {
         }]
         this.messages = messages
     }, 1000)
+  },
+
+  methods: {
+    pushShow(id) {
+      this.$router.push(`/home/message/detail/${id}`)
+    },
+    replaceShow(id){
+      this.$router.replace(`/home/message/detail/${id}`)
+    }
   }
+
 }
 
 </script>
