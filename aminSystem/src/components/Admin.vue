@@ -55,9 +55,6 @@ export default {
     }
     this.fetchCustomers()
   },
-  // updated() {
-  //   this.fetchCustomers()
-  // },
   components: {
     Alert
   }
